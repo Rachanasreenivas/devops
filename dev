@@ -1,0 +1,69 @@
+FROM openjdk
+WORKDIR /app
+COPY . /app
+RUN javac Add.java
+CMD ["java","Add"]
+
+docker build -t img1 .
+docker run img1
+
+class add{
+    public static void main(String[] args){
+        int a=5,b=3,c;
+        c=a+b;
+        System.out.println(c);
+    }
+}
+
+docker login 
+docker images
+docker tag img1:latest preethamvvce/add-app
+docker push preethamvvce/add-app
+docker pull preethamvvce/add-app
+
+package maven.lab6;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+ReadJSON.java
+package vvce.JSON;
+import java.io.FileReader;
+import java.io.IOException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class ReadJSON {
+	public static void main(String[] args) throws IOException, ParseException {
+		JSONParser jsonparser = new JSONParser();
+		FileReader reader = new FileReader(".\\JSON\\student.json");
+		Object obj = jsonparser.parse(reader);
+		JSONObject empjsonobj = (JSONObject)obj;
+		
+		String fname = (String) empjsonobj.get("firstname");
+		String lname = (String) empjsonobj.get("lastname");
+		
+		System.out.println("first name:"+fname);
+		System.out.println("Last name:"+lname);
+		}
+}
+
+
+student.json
+{ "firstname":"rachana" ,
+"lastname":"hs" }
+
+maven-archetype-quickstart 1.1 to 1.4
+
+<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
+add in pom.xml
